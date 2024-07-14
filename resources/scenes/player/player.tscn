@@ -10,7 +10,8 @@ radius = 49.2544
 script = ExtResource("1_icynt")
 
 [node name="PlayerImage" type="Sprite2D" parent="."]
-position = Vector2(2, -32)
+position = Vector2(30, -3)
+rotation = 1.5708
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_6si4w")
 
@@ -28,13 +29,13 @@ one_shot = true
 [node name="LaserStartPosition" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="LaserStartPosition"]
-position = Vector2(17, -110)
+position = Vector2(107, 11)
 
 [node name="Marker2D2" type="Marker2D" parent="LaserStartPosition"]
-position = Vector2(8, -106)
+position = Vector2(104, 3)
 
 [node name="Marker2D3" type="Marker2D" parent="LaserStartPosition"]
-position = Vector2(28, -105)
+position = Vector2(105, 19)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="ShotTimer" to="." method="_on_shot_timer_ready"]
