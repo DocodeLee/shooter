@@ -6,6 +6,8 @@
 size = Vector2(775, 24)
 
 [node name="Billboard" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 7
 
 [node name="BillboardImage" type="Sprite2D" parent="."]
 scale = Vector2(0.63, 0.63)
