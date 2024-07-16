@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://buevwg15vrg2e"]
+
+[ext_resource type="Texture2D" uid="uid://b66crbapips7n" path="res://resources/graphics/objects/ventilation_hole.png" id="1_xwupm"]
+[ext_resource type="Texture2D" uid="uid://du7xlymcm667" path="res://resources/graphics/decals/white.png" id="2_6bjqc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exm8k"]
+radius = 87.2812
+
+[sub_resource type="Gradient" id="Gradient_0j5xs"]
+offsets = PackedFloat32Array(0.0142857, 0.0714286, 0.205714, 0.374286, 0.388571, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.254286, 0.254286, 0.254286, 1, 0.363156, 0.363156, 0.363156, 1, 0.391669, 0.391669, 0.391669, 1, 0.328007, 0.328007, 0.328007, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_840th"]
+gradient = SubResource("Gradient_0j5xs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rko7u"]
+lifetime_randomness = 0.71
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 84.91
+gravity = Vector3(40, -150, 0)
+scale_max = 4.0
+color = Color(0.945098, 0.933333, 0.854902, 0.0823529)
+color_ramp = SubResource("GradientTexture1D_840th")
+
+[node name="SteamVent" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_exm8k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xwupm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_rko7u")
+texture = ExtResource("2_6bjqc")
+lifetime = 3.0

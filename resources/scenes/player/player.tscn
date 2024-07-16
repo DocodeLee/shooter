@@ -1,10 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://o3ed3n7ummfb"]
+[gd_scene load_steps=9 format=3 uid="uid://o3ed3n7ummfb"]
 
 [ext_resource type="Texture2D" uid="uid://b15lxe6bb2ear" path="res://resources/graphics/player/player.png" id="1_6si4w"]
 [ext_resource type="Script" path="res://resources/scenes/player/player.gd" id="1_icynt"]
+[ext_resource type="Texture2D" uid="uid://du7xlymcm667" path="res://resources/graphics/decals/white.png" id="3_7tspd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdmrm"]
 radius = 49.2544
+
+[sub_resource type="Gradient" id="Gradient_x5l3w"]
+offsets = PackedFloat32Array(0, 0.962857)
+colors = PackedColorArray(0.352941, 0.764706, 0.788235, 0.741176, 0.25098, 0.784314, 0.733333, 0.631373)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3v02j"]
+gradient = SubResource("Gradient_x5l3w")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4g4yr"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hbm0r"]
+particle_flag_disable_z = true
+angular_velocity_min = 10.0
+angular_velocity_max = 88.0
+directional_velocity_min = 400.0
+directional_velocity_max = 600.0
+directional_velocity_curve = SubResource("CurveXYZTexture_4g4yr")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 0.6
+color = Color(0.25098, 0.784314, 0.733333, 0.631373)
+color_ramp = SubResource("GradientTexture1D_3v02j")
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 31
@@ -37,6 +60,15 @@ position = Vector2(104, 3)
 
 [node name="Marker2D3" type="Marker2D" parent="LaserStartPosition"]
 position = Vector2(105, 19)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(106, 12)
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_hbm0r")
+texture = ExtResource("3_7tspd")
+lifetime = 0.2
+one_shot = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="ready" from="ShotTimer" to="." method="_on_shot_timer_ready"]
