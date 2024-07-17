@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcygrijkhp1wc"]
+[gd_scene load_steps=19 format=3 uid="uid://dcygrijkhp1wc"]
 
 [ext_resource type="Script" path="res://resources/scenes/levels/level.gd" id="1_vdjt7"]
 [ext_resource type="Texture2D" uid="uid://b7hyfl8mot18h" path="res://resources/graphics/ground/stones.png" id="2_68hyk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ly7xssab53p" path="res://resources/graphics/decals/moss/moss_5.png" id="10_du2r8"]
 [ext_resource type="PackedScene" uid="uid://bf6s3jkyiojhp" path="res://resources/scenes/objects/house.tscn" id="11_bgid5"]
 [ext_resource type="PackedScene" uid="uid://buevwg15vrg2e" path="res://resources/scenes/objects/steam_vent.tscn" id="12_fgelw"]
+[ext_resource type="PackedScene" uid="uid://5ncfmj3qnobx" path="res://resources/scenes/objects/light_fan_animation.tscn" id="13_ek8fr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8aqn"]
 resource_name = "walls"
@@ -238,7 +239,7 @@ position = Vector2(3926, 29)
 texture = ExtResource("9_5mj46")
 
 [node name="House" parent="Ground" instance=ExtResource("11_bgid5")]
-position = Vector2(4831, 2842)
+position = Vector2(5161, 2812)
 rotation = 2.80126
 
 [node name="Moss36" type="Sprite2D" parent="Ground"]
@@ -251,8 +252,38 @@ position = Vector2(-96, 649)
 [node name="SteamVent2" parent="Ground" instance=ExtResource("12_fgelw")]
 position = Vector2(271, 1230)
 
+[node name="LightFanAnimation" parent="Ground" instance=ExtResource("13_ek8fr")]
+position = Vector2(1929, 2500)
+scale = Vector2(1.518, 1.438)
+autoplay = "default"
+frame_progress = 0.685696
+
+[node name="LightFanAnimation2" parent="Ground" instance=ExtResource("13_ek8fr")]
+position = Vector2(2424, 3269)
+autoplay = "default"
+frame_progress = 0.640179
+
+[node name="LightFanAnimation3" parent="Ground" instance=ExtResource("13_ek8fr")]
+position = Vector2(3317, 3899)
+scale = Vector2(1.704, 1.646)
+autoplay = "default"
+frame_progress = 0.640179
+
+[node name="LightFanAnimation4" parent="Ground" instance=ExtResource("13_ek8fr")]
+position = Vector2(4934, 3471)
+scale = Vector2(1.476, 1.544)
+autoplay = "default"
+frame_progress = 0.640179
+
+[node name="LightFanAnimation5" parent="Ground" instance=ExtResource("13_ek8fr")]
+position = Vector2(5312, 1911.5)
+scale = Vector2(1.556, 1.57)
+autoplay = "default"
+frame_progress = 0.640179
+
 [node name="Gate" parent="." instance=ExtResource("3_0kpjc")]
 position = Vector2(544, -366)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_fj1ag")]
 position = Vector2(526, 538)
@@ -262,10 +293,12 @@ zoom = Vector2(0.6, 0.6)
 position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(0.735875, 0.21564, 0.20131, 0.823529)
 energy = 0.64
+metadata/_edit_lock_ = true
 
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="grenade_fire" from="Player" to="." method="_on_player_grenade_fire"]
