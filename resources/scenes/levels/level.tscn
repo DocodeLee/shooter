@@ -263,6 +263,10 @@ position_smoothing_enabled = true
 
 [node name="Projectiles" type="Node2D" parent="."]
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.735875, 0.21564, 0.20131, 0.823529)
+energy = 0.64
+
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="grenade_fire" from="Player" to="." method="_on_player_grenade_fire"]
 [connection signal="laser_fire" from="Player" to="." method="_on_player_laser_fire"]
